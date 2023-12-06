@@ -1,16 +1,17 @@
 import Review from "./components/Review";
+import "./app.css";
 
 function App() {
   return (
-    <main>
-      <section className="container">
+   
+      <main className="container">
         <div className="title">
           <h2>Reviews</h2>
           <div className="underline"></div>
         </div>
         <Review />
-      </section>
-    </main>
+      </main>
+   
   );
 }
 
