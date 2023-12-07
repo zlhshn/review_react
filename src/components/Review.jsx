@@ -7,20 +7,50 @@ const Review = () => {
   const [index, setIndex] = useState(0);
   const { name, job, image, text } = data[index];
 
+
+const checkNumber = (number) => {
+  if(number> data.length - 1){
+    return 0
+  }
+  if (number < 0) {
+    return people.length - 1;
+  }
+  return number
+}
+
+
   const handleNext = () => {
-    return index < data.length - 1 ? setIndex(index + 1) : setIndex(0);
+    // return index < data.length - 1 ? setIndex(index + 1) : setIndex(0);
+
+    setIndex((index)=>{
+      let newIndex = index +1
+      return checkNumber(newIndex)
+    })
   };
 
   const handlePrev = () => {
-    return index === 0 ? setIndex(data.length - 1) : setIndex(index - 1);
+    // return index === 0 ? setIndex(data.length - 1) : setIndex(index - 1);
+
+    setIndex((index)=>{
+      let newIndex = index - 1
+      return checkNumber(newIndex)
+    })
+
   };
 
   const handleRandom = () => {
     let rndmNum = Math.floor(Math.random() * data.length);
+    
+    // if(rndmNum===data.length-1){
+    //   rndmNum = 0
+    // }
+    // if(rndmNum === 0){
+    //   rndmNum = index +1
+    // }
     if (rndmNum === index) {
-     rndmNum
-    } 
-    setIndex(rndmNum);
+      rndmNum = index +1
+     } 
+    setIndex(checkNumber(rndmNum));
   };
 
   return (
